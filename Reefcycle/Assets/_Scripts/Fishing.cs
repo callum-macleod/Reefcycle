@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Fishing : MonoBehaviour
 {
-    public KeyCode castKey = KeyCode.E; // Left click to cast
+    public KeyCode castKey = KeyCode.E; 
+    public int caughtFish;
+    public int maxFish = 10;
 
     [Header("Fishing Settings")]
     public float minBiteTime = 2f;
@@ -38,9 +40,18 @@ public class Fishing : MonoBehaviour
 
         if (fishBite)
         {
-            Debug.Log("Fish hooked! Reeling in...");
-            yield return new WaitForSeconds(2f); // simulate reeling in
-            Debug.Log("You caught a fish!");
+            if(caughtFish <= maxFish)
+            {
+                Debug.Log("Fish hooked! Reeling in...");
+                yield return new WaitForSeconds(2f); // simulate reeling in
+                caughtFish++;
+                Debug.Log("You caught a fish! you have " + caughtFish + "/" + (maxFish+1) + " fish");
+            }
+            else
+            {
+                Debug.Log("you have caugh " + (maxFish +1) + " return to hub to sell");
+            }
+               
         }
         else
         {

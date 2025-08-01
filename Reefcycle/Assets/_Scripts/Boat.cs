@@ -23,6 +23,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.E)) 
+               
+        {
+            moveSpeed = 0;
+        }
+
         // keep fixed height
         transform.position = new Vector3(transform.position.x, height, transform.position.z);
 
